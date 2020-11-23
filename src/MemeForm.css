@@ -1,0 +1,13 @@
+#MemeForm {
+    margin: 1em;
+    margin-bottom: 3em;
+}
+
+#MemeForm label {
+    display: block;
+    margin: 5px;
+}
+
+#MemeForm button {
+    margin: 5px;
+}
