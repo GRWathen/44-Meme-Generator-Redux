@@ -14,7 +14,7 @@ const store = createStore(memeReducer);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App store={store} />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,11 +1,20 @@
-function Meme({ top, url, bottom }) {
+import { useDispatch } from "react-redux";
+
+function Meme({ id, top, url, bottom }) {
+    const dispatch = useDispatch();
+
     function click(event) {
-        console.log("grw");
-        //event.target.parentElement.remove();
+        event.preventDefault();
+        const id = event.target.parentElement.getAttribute("data-id");
+        dispatch({
+            type: "DELETE", payload: {
+                "id": id
+            }
+        });
     }
 
     return (
-        <div onClick={click}>
+        <div data-id={id} onClick={click}>
             <span className="top">{top}</span>
             <img src={url} alt="meme" />
             <span className="bottom">{bottom}</span>

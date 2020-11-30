@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { renderToString } from 'react-dom/server'
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 import "./MemeForm.css";
 
-const MemeForm = ({ store }) => {
+const MemeForm = () => {
+    const dispatch = useDispatch();
+
     function enableButton() {
         const txtURL = document.querySelector("#txtURL");
         const txtTop = document.querySelector("#txtTop");
@@ -37,11 +40,15 @@ const MemeForm = ({ store }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const { imageURL, textTop, textBottom } = e.target;
-        store.dispatch({ type: "ADD", payload: {
+        const key = uuidv4();
+        dispatch({ type: "ADD", payload: {
+            "key": key,
+            "id": key,
             "url": imageURL.value,
             "top": textTop.value,
             "bottom": textBottom.value
         }});
+
         setFormData(initialState);
     }
 
